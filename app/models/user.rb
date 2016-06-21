@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   validates :password,
     length: { in: 6..20 }, on: :create
 
+  paginates_per 10
+
   def full_name
     "#{firstname} #{lastname}"
   end

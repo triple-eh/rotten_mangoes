@@ -1,0 +1,9 @@
+<h2>Admin Panel</h2>
+<p>List of users below</p>
+<% @users.each do |user| %>
+  <p>Name: <%= user.full_name %></p>
+  <p>Email: <%= user.email %></p>
+  <p>Created: <%= user.created_at %></p>
+  <hr>
+<% end %>
+<%= paginate @users %>

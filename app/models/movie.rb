@@ -29,6 +29,8 @@ class Movie < ActiveRecord::Base
   validates :image,
     processing: true
 
+  paginates_per 10
+
   def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size if reviews.any?
   end
