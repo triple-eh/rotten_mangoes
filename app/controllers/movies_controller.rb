@@ -19,6 +19,16 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
+      redirect_to movies_path
+    else
+      render :new
+    end
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+
+    if @movie.update_attributes(movie_params)
       redirect_to movie_path(@movie)
     else
       render :edit
@@ -28,7 +38,7 @@ class MoviesController < ApplicationController
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
-    redirect_to movie_path
+    redirect_to movies_path
   end
 
   protected
