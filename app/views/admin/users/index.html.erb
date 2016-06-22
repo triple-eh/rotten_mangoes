@@ -8,6 +8,7 @@
     <th>First Name</th>
     <th>Email</th>
     <th>Create At</th>
+    <th>Impersonate</th>
   </tr>
   <% @users.each do |user| %>
   <tr>
@@ -15,6 +16,7 @@
     <td><%= user.lastname %> </td>
     <td><%= user.firstname %></td>
     <td><%= user.created_at %></td>
+    <td><%= link_to "Log in as this user", admin_session_path({user_id: user.id}), method: 'create' %></td>
   </tr>
   <% end %>
 </table>  
