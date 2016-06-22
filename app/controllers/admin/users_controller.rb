@@ -14,7 +14,6 @@ class Admin::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
       redirect_to admin_users_path, notice: "New user created, #{@user.firstname}!"
     else
       render 'admin/users/new'
@@ -23,6 +22,13 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:alert] = "User, #{@user.email} deleted!"
+    redirect_to admin_users_path
   end
 
   protected
