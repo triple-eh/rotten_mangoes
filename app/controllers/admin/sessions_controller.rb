@@ -1,4 +1,4 @@
-class Admin::SessionController < ApplicationController
+class Admin::SessionsController < ApplicationController
 
   def create
     user = User.find(params[:user_id])
