@@ -1,4 +1,19 @@
 class Movie < ActiveRecord::Base
+  scope :min_runtime,    ->(minutes) { 
+      where('runtime_in_minutes >= ?', minutes)
+    }
+
+  scope :max_runtime,    ->(minutes) { 
+      where('runtime_in_minutes <= ?', minutes)
+    }
+
+  scope :title_contains,    ->(title) { 
+    where('title like ?', "%#{title}%")
+  }
+
+  scope :director_contains,    ->(dir) { 
+    where('director like ?', "%#{dir}%")
+  }
 
   has_many :reviews
 
