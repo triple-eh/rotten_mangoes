@@ -1,6 +1,15 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    query = params[:q]
+    @movies = params[:q] ? Movie.where(
+      '(title like :title) AND 
+      (director like :director) AND 
+      (runtime_in_minutes >= :start AND runtime_in_minutes <= :end)', 
+      title: "%#{query[:title]}%", 
+      director: "%#{query[:director]}%", 
+      start: "#{query[:runtime_in_minutes].split(',')[0]}",
+      end: "#{query[:runtime_in_minutes].split(',')[1]}"
+      ) : Movie.all
   end
 
   def show
