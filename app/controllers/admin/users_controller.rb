@@ -26,6 +26,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
+    UserMailer.account_deleted_email(@user).deliver_now
     @user.destroy
     flash[:alert] = "User, #{@user.email} deleted!"
     redirect_to admin_users_path
