@@ -1,10 +1,12 @@
 class MoviesController < ApplicationController
   def index
-    query = params[:q]
-    title = query[:title]
-    director = query[:director]
-    min_runtime = query[:runtime_in_minutes].split(',')[0]
-    max_runtime = query[:runtime_in_minutes].split(',')[1]
+    if params[:q]
+      query = params[:q]
+      title = query[:title]
+      director = query[:director]
+      min_runtime = query[:runtime_in_minutes].split(',')[0]
+      max_runtime = query[:runtime_in_minutes].split(',')[1]
+    end
 
     if params[:q] 
       @movies = Movie
@@ -13,7 +15,7 @@ class MoviesController < ApplicationController
       .min_runtime(min_runtime)
       .max_runtime(max_runtime)
     else 
-      Movie.all
+      @movies = Movie.all
     end
   end
 
