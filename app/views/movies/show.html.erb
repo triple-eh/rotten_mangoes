@@ -16,7 +16,7 @@
 
 <% if current_user %>
   <% @movie.reviews.each do |review| %>
-  <%= render partial: 'review', locals: { review: review } %>
+  <%= render partial: 'review', locals: { review: review, user: review.user } %>
   <% end %>
   <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
 <% else %>
