@@ -1,14 +1,10 @@
 class MoviesController < ApplicationController
   def index
-    binding.pry
-    if params[:q]
+    if params[:q] 
       query = params[:q]
       search_term = query[:search_term]
       min_runtime = query[:runtime_in_minutes].split(',')[0]
       max_runtime = query[:runtime_in_minutes].split(',')[1]
-    end
-
-    if params[:q] 
       @movies = Movie
       .title_or_director_contains(search_term)
       .min_runtime(min_runtime)
