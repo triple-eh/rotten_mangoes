@@ -7,12 +7,8 @@ class Movie < ActiveRecord::Base
       where('runtime_in_minutes <= ?', minutes)
     }
 
-  scope :title_contains,    ->(title) { 
-    where('title like ?', "%#{title}%")
-  }
-
-  scope :director_contains,    ->(dir) { 
-    where('director like ?', "%#{dir}%")
+  scope :title_or_director_contains,    ->(search_term) { 
+    where('title like :search_term or director like :search_term', search_term: "%#{search_term}%")
   }
 
   has_many :reviews

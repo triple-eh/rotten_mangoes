@@ -1,12 +1,8 @@
 <%= form_tag("/movies", method: 'GET') do %>
 <%= fields_for :q do |f| %>
   <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :director %>
-    <%= f.text_field :director %>
+    <%= f.label :search_term, "Enter search term" %>
+    <%= f.text_field :search_term %>
   </p>
   <p>
     <%= f.label :runtime_in_minutes, 'Duration' %>
