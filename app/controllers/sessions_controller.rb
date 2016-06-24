@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
 
       if user.is_admin?
-        redirect_to admin_users_path, notic: "Hello admin!"
+        session[:admin_id] = user.id
+        redirect_to admin_users_path, notice: "Hello admin!"
       else
         redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
       end

@@ -1,6 +1,6 @@
 <% if current_user %>
   <span>Signed in as <%= current_user.full_name %> 
-  <% if admin_user %>
+  <% unless admin_user == current_user %>
     <%= link_to "Back to #{admin_user.full_name}", admin_session_path, method: :delete %>
   <% else %>
     <%= link_to "Log out", session_path('current_user'), method: :delete %>
