@@ -1,8 +1,2 @@
-
-<h1>Rotten Mangoes</h1>
-<%= link_to "Submit Movie", new_movie_path %>
-<hr>
-<% @movies.each do |movie| %>
-  <%= render partial: 'movie', locals: { movie: movie } %> 
-<% end %>
-<%= render 'search_form' %>
+<h5><%= link_to "Submit Movie", new_movie_path %></h5>
+<%= render @movies %> 

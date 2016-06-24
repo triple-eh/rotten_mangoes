@@ -2,15 +2,20 @@
 <html>
 <head>
   <title>RottenMangoes</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value) %>
-  <% end %>
-  <%= yield %>
-  <%= render 'layouts/footer' %>
+  <%= render 'layouts/navbar' %>
+  <div class="container">
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value) %>
+    <% end %>
+    <br><br>
+    <%= yield %>
+    <br><br>
+  </div>
 </body>
 </html>

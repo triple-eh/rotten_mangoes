@@ -1,0 +1,15 @@
+<h2>Profile page of <%= @user.firstname %></h2>
+<p>Full name: <%= @user.full_name %></p>
+<p>Email: <%= @user.email %></p>
+<br>
+<hr>
+<h2>List of reviews below</h2>
+<% unless @user_reviews.empty? %>
+  <% @user_reviews.each do |review| %>
+    <% @movie = find_movie_by_review(review) %>
+    <p><strong>Review for <%= link_to @movie.title, movie_path(@movie.id) %></strong></p>
+    <%= render partial: 'movies/review', locals: { review: review, user: review.user } %>
+  <% end %>
+<% else %>
+  <p>User hasn't posted any reviews yet<p>
+<% end %>

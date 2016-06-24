@@ -1,6 +1,6 @@
 class Admin::SessionsController < ApplicationController
 
-  def create
+  def become
     user = User.find(params[:user_id])
     session[:admin_user_id] = current_user.id
     session[:user_id] = user.id
