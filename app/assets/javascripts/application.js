@@ -15,3 +15,11 @@
 //= require turbolinks
 //= require js
 //= require_tree .
+
+var ready = function() {
+  $(".button-collapse").sideNav();
+  $('select').material_select();  
+}
+
+$(document).ready(ready);
+$(document).on('page:change',ready);
