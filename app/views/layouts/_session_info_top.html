@@ -1,5 +1,9 @@
+<%= link_to "Movies", movies_path %>
+<% if admin_user %>
+  <%= link_to "Admin Panel", admin_users_path %>
+<% end %>
 <% if current_user %>
-  <span>Signed in as <%= current_user.full_name %> 
+  <span>Signed in as <%= current_user.full_name %></span>
   <% unless admin_user == current_user %>
     <%= link_to "Back to #{admin_user.full_name}", admin_session_path, method: :delete %>
   <% else %>
@@ -7,5 +11,4 @@
   <% end %>
 <% else %>
   <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
-  </span>
 <% end %>

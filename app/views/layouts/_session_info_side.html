@@ -1,0 +1,14 @@
+<li><%= link_to "Movies", movies_path %></li>
+<% if admin_user %>
+  <li><%= link_to "Admin Panel", admin_users_path %></li>
+<% end %>
+<% if current_user %>
+  <% unless admin_user == current_user %>
+   <li> <%= link_to "Back to Admin", admin_session_path, method: :delete %></li>
+  <% else %>
+   <li> <%= link_to "Log out", session_path('current_user'), method: :delete %></li>
+  <% end %>
+<% else %>
+ <li> <%= link_to "Log In", new_session_path %> </li>
+ <li> <%= link_to "Sign Up", new_user_path %></li>
+<% end %>

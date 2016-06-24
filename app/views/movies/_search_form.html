@@ -1,15 +1,18 @@
-<%= form_tag("/movies", method: 'GET') do %>
-<%= fields_for :q do |f| %>
-  <p>
-    <%= f.label :search_term, "Enter search term" %>
-    <%= f.text_field :search_term %>
-  </p>
-  <p>
-    <%= f.label :runtime_in_minutes, 'Duration' %>
-    <%= f.select :runtime_in_minutes, duration_choices %>
-  </p>
-  <p>
-    <%= f.submit "Submit!" %>
-  </p>
-<% end %>
-<% end %>
+<div class="section">
+<div class="row">
+  <h5>Find movie</h5>
+  <%= form_tag("/movies", method: 'GET') do %>
+  <%= fields_for :q do |f| %>
+    <div class="input-field">
+      <%= f.label :search_term, "Enter search term" %>
+      <%= f.text_field :search_term %>
+    </div>
+    <div class="input-field">
+      <%= f.label :runtime_in_minutes, :class =>'active' %>
+      <%= f.select :runtime_in_minutes, duration_choices %>
+    </div>
+      <button class="btn" type="submit" name="action">Submit</button>
+  <% end %>
+  <% end %>
+</div>
+</div>

@@ -1,15 +1,14 @@
  <nav>
   <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">RottenMangoes</a>
     <ul class="right hide-on-med-and-down">
-      <li><%= render 'layouts/session_info' %></li>
+      <li><%= render 'layouts/session_info_top' %></li>
     </ul>
 
     <a href="#" data-activates="mobile-nav" class="button-collapse">
       <i class="material-icons">reorder</i>
     </a>
     <ul class="side-nav" id="mobile-nav">
-      <li><a href="#">Login</a></li>
-      <li><a href="#">Profile</a></li>
+      <%= render '/layouts/session_info_side' %>
     </ul>
     </div>
 </nav>
