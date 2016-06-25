@@ -19,8 +19,8 @@ var ready = function() {
             '<p>' + json['rating_out_of_ten'] + '/10</p>' + user_link + '<br>' + '</div>')
       }
     });
-    form
-      .children("textarea, input").val("");
+    $("#review_text").val("");
+    $("#review_rating_out_of_ten").val("");
   });
 }
 
