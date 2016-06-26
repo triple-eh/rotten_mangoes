@@ -1,3 +1,6 @@
 <h5><%= link_to "Submit Movie", new_movie_path %></h5>
-<%= render @movies %>
+<%= render 'new_movie_form' %>
+<div class="section" id="movies-section">
+  <%= render @movies %>
+</div>
 <%= render 'search_form' %>

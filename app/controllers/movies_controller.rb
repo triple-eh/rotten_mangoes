@@ -12,6 +12,8 @@ class MoviesController < ApplicationController
     else 
       @movies = Movie.all
     end
+
+    @movie = Movie.new
   end
 
   def show
@@ -31,7 +33,18 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
 
     if @movie.save
-      redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!"
+      avg_rating = @movie.review_average if @movie.reviews.any?
+      response = {
+        img_thumb_url: @movie.image.thumb.url,
+        title: @movie.title,
+        page_url: movie_path(@movie),
+        release_date: @movie.release_date,
+        director: @movie.director,
+        desc: @movie.description,
+        avg_rating: avg_rating
+      }.to_json
+      render json: response
+       # notice: "#{@movie.title} was submitted successfully!"
     else
       render :new
     end
